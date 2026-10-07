@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Signup</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- SIGNUP CONTAINER -->
+    <!-- ========================= -->
+
+    <section class="login-container">
+
+        <div class="login-card">
+
+
+            <!-- ICON -->
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                Create Admin Account
+            </h1>
+
+
+            <p class="login-subtitle">
+                Create your admin account
+            </p>
+
+
+
+            <!-- ========================= -->
+            <!-- SIGNUP FORM -->
+            <!-- ========================= -->
+
+            <form id="signupForm">
+
+
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a strong password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CREATE ACCOUNT -->
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Create Account
+
+                </button>
+
+
+
+                <!-- MESSAGE -->
+
+                <p
+                    id="signupMessage"
+                    class="login-error">
+                </p>
+
+
+            </form>
+
+
+
+            <!-- LOGIN LINK -->
+
+            <p
+                style="
+                    text-align: center;
+                    margin-top: 20px;
+                ">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script>
+
+
+        const signupForm =
+            document.getElementById(
+                "signupForm"
+            );
+
+
+        signupForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                // =========================
+                // GET FORM VALUES
+                // =========================
+
+                const username =
+                    document.getElementById(
+                        "username"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value;
+
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    ).value;
+
+
+                const message =
+                    document.getElementById(
+                        "signupMessage"
+                    );
+
+
+                message.textContent = "";
+
+
+
+                // =========================
+                // PASSWORD MATCH
+                // =========================
+
+                if (
+                    password !==
+                    confirmPassword
+                ) {
+
+                    message.textContent =
+                        "Passwords do not match.";
+
+                    return;
+
+                }
+
+
+
+                // =========================
+                // PASSWORD LENGTH
+                // =========================
+
+                if (
+                    password.length < 8
+                ) {
+
+                    message.textContent =
+                        "Password must be at least 8 characters.";
+
+                    return;
+
+                }
+
+
+
+                // =========================
+                // SEND TO SERVER
+                // =========================
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/admin/signup",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        username:
+                                            username,
+
+                                        email:
+                                            email,
+
+                                        password:
+                                            password
+
+                                    })
+
+                            }
+                        );
+
+
+
+                    // =========================
+                    // READ SERVER RESPONSE
+                    // =========================
+
+                    const responseText =
+                        await response.text();
+
+
+                    console.log(
+                        "Server Response:",
+                        responseText
+                    );
+
+
+                    let result;
+
+
+                    try {
+
+                        result =
+                            JSON.parse(
+                                responseText
+                            );
+
+                    }
+
+                    catch (jsonError) {
+
+                        console.error(
+                            "Invalid server response:",
+                            responseText
+                        );
+
+
+                        message.textContent =
+                            "Server returned an invalid response.";
+
+                        return;
+
+                    }
+
+
+
+                    // =========================
+                    // SUCCESS
+                    // =========================
+
+                    if (
+                        response.ok &&
+                        result.success
+                    ) {
+
+                        alert(
+                            "Admin account created successfully!"
+                        );
+
+
+                        window.location.href =
+                            "/login.html";
+
+
+                        return;
+
+                    }
+
+
+
+                    // =========================
+                    // SERVER ERROR
+                    // =========================
+
+                    message.textContent =
+                        result.message ||
+                        "Signup failed.";
+
+                }
+
+
+
+                // =========================
+                // CONNECTION ERROR
+                // =========================
+
+                catch (error) {
+
+                    console.error(
+                        "Signup Error:",
+                        error
+                    );
+
+
+                    message.textContent =
+                        "Unable to connect to server.";
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

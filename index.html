@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Internova</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        /* =========================
+           HOME PAGE
+        ========================= */
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER / HERO
+        ========================= */
+
+        .home-header {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .home-header .logo-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .home-header h1 {
+            margin: 0;
+            font-size: 42px;
+            font-weight: 800;
+        }
+
+        .home-header p {
+            margin: 12px auto 0;
+            max-width: 650px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =========================
+           SEARCH SECTION
+        ========================= */
+
+        .search-section {
+            width: min(1050px, calc(100% - 40px));
+            margin: 10px auto 45px;
+            padding: 18px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            box-sizing: border-box;
+
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.10);
+        }
+
+        .search-section input,
+        .search-section select {
+            flex: 1;
+            min-width: 0;
+            height: 48px;
+            padding: 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            font-size: 14px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .search-section input:focus,
+        .search-section select:focus {
+            border-color: #7b2ff7;
+            box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.10);
+        }
+
+        .search-section button {
+            height: 48px;
+            padding: 0 25px;
+            border: none;
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7b2ff7,
+                    #9b5cff
+                );
+
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .search-section button:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 8px 18px rgba(123, 47, 247, 0.25);
+        }
+
+        /* =========================
+           INTERNSHIP CONTAINER
+        ========================= */
+
+        #internshipContainer {
+            width: min(1150px, calc(100% - 40px));
+            margin: 0 auto 60px;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 24px;
+        }
+
+        /* =========================
+           INTERNSHIP CARD
+        ========================= */
+
+        .internship-card {
+            position: relative;
+
+            padding: 25px;
+
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            overflow: hidden;
+        }
+
+        .internship-card::before {
+            content: "";
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7b2ff7,
+                    #c15cff
+                );
+        }
+
+        .internship-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.13);
+        }
+
+        /* =========================
+           TAG
+        ========================= */
+
+        .tag {
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: #f0e7ff;
+            color: #7025c9;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 13px;
+        }
+
+        /* =========================
+           CARD TEXT
+        ========================= */
+
+        .internship-card h2 {
+            margin: 0 0 8px;
+
+            font-size: 20px;
+            line-height: 1.35;
+        }
+
+        .internship-card h3 {
+            margin: 0 0 18px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            color: #6c2bd9;
+        }
+
+        .internship-card .info {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+
+            margin-bottom: 20px;
+        }
+
+        .internship-card .info p {
+            margin: 0;
+
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* =========================
+           VIEW DETAILS BUTTON
+        ========================= */
+
+        .internship-card button {
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7b2ff7,
+                    #9b5cff
+                );
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .internship-card button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 18px rgba(123, 47, 247, 0.25);
+        }
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        .no-results {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            background: rgba(255, 255, 255, 0.8);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .no-results h2 {
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: #666;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            #internshipContainer {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .home-header {
+                padding-top: 35px;
+            }
+
+            .home-header h1 {
+                font-size: 32px;
+            }
+
+            .home-header p {
+                font-size: 15px;
+            }
+
+            .search-section {
+                flex-direction: column;
+            }
+
+            .search-section input,
+            .search-section select,
+            .search-section button {
+                width: 100%;
+            }
+
+            #internshipContainer {
+                grid-template-columns: 1fr;
+            }
+
+            .internship-card {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER / HERO
+    ========================= -->
+
+    <header class="home-header">
+
+        <div class="logo-icon">
+            💼
+        </div>
+
+        <span class="hero-badge">
+            🚀 Start Your Career
+        </span>
+
+        <h1>
+            Internova
+        </h1>
+
+        <p>
+            Find internships based on your skills,
+            preferred role and location.
+            Take the first step towards your career.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH SECTION
+    ========================= -->
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Search by role or skill...">
+
+
+        <select id="locationFilter">
+
+            <option value="all">
+                📍 All Locations
+            </option>
+
+            <option value="Remote">
+                Remote
+            </option>
+
+            <option value="Kolkata">
+                Kolkata
+            </option>
+
+            <option value="Delhi">
+                Delhi
+            </option>
+
+            <option value="Bangalore">
+                Bangalore
+            </option>
+
+            <option value="Mumbai">
+                Mumbai
+            </option>
+
+        </select>
+
+
+        <button onclick="searchInternships()">
+
+            🔍 Search
+
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         INTERNSHIP CARDS
+    ========================= -->
+
+    <main id="internshipContainer">
+
+
+        <!-- =========================
+             INTERNSHIP 1
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                Web Development
+            </span>
+
+            <h2>
+                Web Development Intern
+            </h2>
+
+            <h3>
+                ABC Technologies
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Remote
+                </p>
+
+                <p>
+                    💰 ₹10,000 / month
+                </p>
+
+                <p>
+                    ⏳ 3 Months
+                </p>
+
+                <p>
+                    🛠 HTML, CSS, JavaScript
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(0)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNSHIP 2
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                Frontend
+            </span>
+
+            <h2>
+                Frontend Developer Intern
+            </h2>
+
+            <h3>
+                XYZ Solutions
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Bangalore
+                </p>
+
+                <p>
+                    💰 ₹15,000 / month
+                </p>
+
+                <p>
+                    ⏳ 6 Months
+                </p>
+
+                <p>
+                    🛠 HTML, CSS, JavaScript, React
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(1)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNSHIP 3
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                C++
+            </span>
+
+            <h2>
+                C++ Developer Intern
+            </h2>
+
+            <h3>
+                Tech World
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Delhi
+                </p>
+
+                <p>
+                    💰 ₹12,000 / month
+                </p>
+
+                <p>
+                    ⏳ 3 Months
+                </p>
+
+                <p>
+                    🛠 C++, OOP, DSA
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(2)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNSHIP 4
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                JavaScript
+            </span>
+
+            <h2>
+                JavaScript Developer Intern
+            </h2>
+
+            <h3>
+                CodeCraft
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Remote
+                </p>
+
+                <p>
+                    💰 ₹8,000 / month
+                </p>
+
+                <p>
+                    ⏳ 3 Months
+                </p>
+
+                <p>
+                    🛠 JavaScript, HTML, CSS
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(3)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNSHIP 5
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                Python
+            </span>
+
+            <h2>
+                Python Developer Intern
+            </h2>
+
+            <h3>
+                Digital Labs
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Kolkata
+                </p>
+
+                <p>
+                    💰 ₹12,000 / month
+                </p>
+
+                <p>
+                    ⏳ 4 Months
+                </p>
+
+                <p>
+                    🛠 Python, SQL, Git
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(4)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNSHIP 6
+        ========================= -->
+
+        <div class="internship-card">
+
+            <span class="tag">
+                React
+            </span>
+
+            <h2>
+                React Developer Intern
+            </h2>
+
+            <h3>
+                WebWorks
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    📍 Mumbai
+                </p>
+
+                <p>
+                    💰 ₹15,000 / month
+                </p>
+
+                <p>
+                    ⏳ 6 Months
+                </p>
+
+                <p>
+                    🛠 React, JavaScript, CSS
+                </p>
+
+            </div>
+
+            <button onclick="openDetails(5)">
+
+                View Details →
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

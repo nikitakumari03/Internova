@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        /* =========================
+           PASSWORD FIELD
+        ========================= */
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 45px;
+            box-sizing: border-box;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            line-height: 1;
+        }
+
+        /* =========================
+           FORGOT PASSWORD
+        ========================= */
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            color: #7b2ff7;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <section class="login-container">
+
+        <div class="login-card">
+
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+
+            <h1>
+                Admin Login
+            </h1>
+
+
+            <p class="login-subtitle">
+                Login to manage internship applications
+            </p>
+
+
+            <form id="loginForm">
+
+
+                <!-- USERNAME -->
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required>
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required>
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        onclick="togglePassword()">
+
+                        👁️
+
+                    </button>
+
+                </div>
+
+
+                <!-- FORGOT PASSWORD -->
+
+                <a
+                    href="reset-password.html"
+                    class="forgot-password">
+
+                    Forgot Password?
+
+                </a>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Login
+
+                </button>
+
+
+                <!-- ERROR -->
+
+                <p
+                    id="loginError"
+                    class="login-error">
+                </p>
+
+
+            </form>
+
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+
+        // =========================
+        // SHOW / HIDE PASSWORD
+        // =========================
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById(
+                    "password"
+                );
+
+            const button =
+                document.querySelector(
+                    ".toggle-password"
+                );
+
+
+            if (
+                password.type === "password"
+            ) {
+
+                password.type = "text";
+
+                button.textContent =
+                    "🙈";
+
+            }
+
+            else {
+
+                password.type = "password";
+
+                button.textContent =
+                    "👁️";
+
+            }
+
+        }
+
+
+        // =========================
+        // LOGIN
+        // =========================
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        loginForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById(
+                        "username"
+                    ).value;
+
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value;
+
+
+                const errorMessage =
+                    document.getElementById(
+                        "loginError"
+                    );
+
+
+                errorMessage.textContent = "";
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/admin/login",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        username:
+                                            username,
+
+                                        password:
+                                            password
+
+                                    })
+
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (
+                        result.success
+                    ) {
+
+                        window.location.href =
+                            "/admin.html";
+
+                    }
+
+                    else {
+
+                        errorMessage.textContent =
+                            result.message;
+
+                    }
+
+
+                }
+
+                catch (error) {
+
+                    console.error(error);
+
+                    errorMessage.textContent =
+                        "Unable to connect to server.";
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

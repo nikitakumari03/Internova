@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Apply for Internship</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        /* =========================
+           FORM VALIDATION
+        ========================= */
+
+        .field-error {
+            display: none;
+            color: #d00000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .input-error {
+            border-color: #d00000 !important;
+            box-shadow: 0 0 0 2px rgba(208, 0, 0, 0.08);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .file-info {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .success-message {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>
+            Apply for Internship
+        </h1>
+
+        <p>
+            Take the next step towards your career
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         APPLICATION FORM
+    ========================= -->
+
+    <section class="apply-container">
+
+        <div class="apply-card">
+
+
+            <h2>
+                Internship Application
+            </h2>
+
+
+            <p class="apply-subtitle">
+                Please fill in your details carefully.
+            </p>
+
+
+            <form id="applicationForm">
+
+
+                <!-- =========================
+                     NAME
+                ========================= -->
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    minlength="2"
+                    maxlength="60"
+                    required>
+
+                <small
+                    id="nameError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     EMAIL
+                ========================= -->
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    maxlength="100"
+                    required>
+
+                <small
+                    id="emailError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     PHONE
+                ========================= -->
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter 10 digit phone number"
+                    maxlength="10"
+                    inputmode="numeric"
+                    required>
+
+                <small
+                    id="phoneError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     COLLEGE
+                ========================= -->
+
+                <label for="college">
+                    College / University
+                </label>
+
+                <input
+                    type="text"
+                    id="college"
+                    placeholder="Enter your college name"
+                    minlength="2"
+                    maxlength="120"
+                    required>
+
+                <small
+                    id="collegeError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     COURSE
+                ========================= -->
+
+                <label for="course">
+                    Course
+                </label>
+
+                <input
+                    type="text"
+                    id="course"
+                    placeholder="e.g. B.Tech CSE"
+                    minlength="2"
+                    maxlength="80"
+                    required>
+
+                <small
+                    id="courseError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     YEAR
+                ========================= -->
+
+                <label for="year">
+                    Current Year
+                </label>
+
+                <select
+                    id="year"
+                    required>
+
+                    <option value="">
+                        Select your year
+                    </option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                    <option value="4th Year">
+                        4th Year
+                    </option>
+
+                </select>
+
+                <small
+                    id="yearError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     SKILLS
+                ========================= -->
+
+                <label for="skills">
+                    Your Skills
+                </label>
+
+                <input
+                    type="text"
+                    id="skills"
+                    placeholder="e.g. HTML, CSS, JavaScript"
+                    minlength="2"
+                    maxlength="250"
+                    required>
+
+                <small
+                    id="skillsError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     RESUME
+                ========================= -->
+
+                <label for="resume">
+                    Upload Resume
+                </label>
+
+                <input
+                    type="file"
+                    id="resume"
+                    accept=".pdf,.doc,.docx"
+                    required>
+
+                <small class="file-info">
+                    Accepted: PDF, DOC, DOCX | Maximum size: 5 MB
+                </small>
+
+                <small
+                    id="resumeError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     MESSAGE
+                ========================= -->
+
+                <label for="message">
+                    Why should we select you?
+                </label>
+
+                <textarea
+                    id="message"
+                    rows="5"
+                    minlength="20"
+                    maxlength="1000"
+                    placeholder="Write a short message..."
+                    required></textarea>
+
+                <small
+                    id="messageError"
+                    class="field-error">
+                </small>
+
+
+                <!-- =========================
+                     SUBMIT
+                ========================= -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                    id="submitButton">
+
+                    Submit Application
+
+                </button>
+
+
+            </form>
+
+
+            <!-- =========================
+                 SUCCESS MESSAGE
+            ========================= -->
+
+            <div
+                id="successMessage"
+                class="success-message">
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        const form =
+            document.getElementById(
+                "applicationForm"
+            );
+
+
+        const successMessage =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        const submitButton =
+            document.getElementById(
+                "submitButton"
+            );
+
+
+        // =========================
+        // HELPER FUNCTIONS
+        // =========================
+
+        function showError(
+            inputId,
+            errorId,
+            message
+        ) {
+
+            const input =
+                document.getElementById(
+                    inputId
+                );
+
+            const error =
+                document.getElementById(
+                    errorId
+                );
+
+
+            input.classList.add(
+                "input-error"
+            );
+
+            error.textContent =
+                message;
+
+            error.style.display =
+                "block";
+
+        }
+
+
+        function clearError(
+            inputId,
+            errorId
+        ) {
+
+            const input =
+                document.getElementById(
+                    inputId
+                );
+
+            const error =
+                document.getElementById(
+                    errorId
+                );
+
+
+            input.classList.remove(
+                "input-error"
+            );
+
+            error.textContent =
+                "";
+
+            error.style.display =
+                "none";
+
+        }
+
+
+        function clearAllErrors() {
+
+            const fields = [
+
+                ["name", "nameError"],
+                ["email", "emailError"],
+                ["phone", "phoneError"],
+                ["college", "collegeError"],
+                ["course", "courseError"],
+                ["year", "yearError"],
+                ["skills", "skillsError"],
+                ["resume", "resumeError"],
+                ["message", "messageError"]
+
+            ];
+
+
+            fields.forEach(
+                function(field) {
+
+                    clearError(
+                        field[0],
+                        field[1]
+                    );
+
+                }
+            );
+
+        }
+
+
+        // =========================
+        // SUBMIT FORM
+        // =========================
+
+        form.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                clearAllErrors();
+
+
+                // =========================
+                // GET VALUES
+                // =========================
+
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const phone =
+                    document
+                        .getElementById("phone")
+                        .value
+                        .trim();
+
+
+                const college =
+                    document
+                        .getElementById("college")
+                        .value
+                        .trim();
+
+
+                const course =
+                    document
+                        .getElementById("course")
+                        .value
+                        .trim();
+
+
+                const year =
+                    document
+                        .getElementById("year")
+                        .value;
+
+
+                const skills =
+                    document
+                        .getElementById("skills")
+                        .value
+                        .trim();
+
+
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
+
+
+                const resumeInput =
+                    document.getElementById(
+                        "resume"
+                    );
+
+
+                // =========================
+                // VALIDATION STATUS
+                // =========================
+
+                let valid = true;
+
+
+                // =========================
+                // NAME
+                // =========================
+
+                const namePattern =
+                    /^[A-Za-z][A-Za-z .'-]*$/;
+
+
+                if (
+                    name.length < 2
+                ) {
+
+                    showError(
+                        "name",
+                        "nameError",
+                        "Please enter your full name."
+                    );
+
+                    valid = false;
+
+                }
+
+                else if (
+                    !namePattern.test(name)
+                ) {
+
+                    showError(
+                        "name",
+                        "nameError",
+                        "Name should contain letters only."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // EMAIL
+                // =========================
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (
+                    !emailPattern.test(email)
+                ) {
+
+                    showError(
+                        "email",
+                        "emailError",
+                        "Please enter a valid email address."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // PHONE
+                // =========================
+
+                if (
+                    !/^[0-9]{10}$/.test(phone)
+                ) {
+
+                    showError(
+                        "phone",
+                        "phoneError",
+                        "Phone number must contain exactly 10 digits."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // COLLEGE
+                // =========================
+
+                if (
+                    college.length < 2
+                ) {
+
+                    showError(
+                        "college",
+                        "collegeError",
+                        "Please enter your college name."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // COURSE
+                // =========================
+
+                if (
+                    course.length < 2
+                ) {
+
+                    showError(
+                        "course",
+                        "courseError",
+                        "Please enter your course."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // YEAR
+                // =========================
+
+                if (!year) {
+
+                    showError(
+                        "year",
+                        "yearError",
+                        "Please select your current year."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // SKILLS
+                // =========================
+
+                if (
+                    skills.length < 2
+                ) {
+
+                    showError(
+                        "skills",
+                        "skillsError",
+                        "Please enter at least one skill."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // MESSAGE
+                // =========================
+
+                if (
+                    message.length < 20
+                ) {
+
+                    showError(
+                        "message",
+                        "messageError",
+                        "Please write at least 20 characters."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                // =========================
+                // RESUME
+                // =========================
+
+                if (
+                    resumeInput.files.length === 0
+                ) {
+
+                    showError(
+                        "resume",
+                        "resumeError",
+                        "Please upload your resume."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!valid) {
+
+                    return;
+
+                }
+
+
+                const resumeFile =
+                    resumeInput.files[0];
+
+
+                // =========================
+                // RESUME SIZE
+                // =========================
+
+                const maxSize =
+                    5 * 1024 * 1024;
+
+
+                if (
+                    resumeFile.size > maxSize
+                ) {
+
+                    showError(
+                        "resume",
+                        "resumeError",
+                        "Resume size must be 5 MB or less."
+                    );
+
+                    return;
+
+                }
+
+
+                // =========================
+                // RESUME EXTENSION
+                // =========================
+
+                const fileName =
+                    resumeFile.name.toLowerCase();
+
+
+                const validExtension =
+                    fileName.endsWith(".pdf") ||
+                    fileName.endsWith(".doc") ||
+                    fileName.endsWith(".docx");
+
+
+                if (
+                    !validExtension
+                ) {
+
+                    showError(
+                        "resume",
+                        "resumeError",
+                        "Only PDF, DOC and DOCX files are allowed."
+                    );
+
+                    return;
+
+                }
+
+
+                // =========================
+                // CREATE FORM DATA
+                // =========================
+
+                const formData =
+                    new FormData();
+
+
+                formData.append(
+                    "name",
+                    name
+                );
+
+
+                formData.append(
+                    "email",
+                    email
+                );
+
+
+                formData.append(
+                    "phone",
+                    phone
+                );
+
+
+                formData.append(
+                    "college",
+                    college
+                );
+
+
+                formData.append(
+                    "course",
+                    course
+                );
+
+
+                formData.append(
+                    "year",
+                    year
+                );
+
+
+                formData.append(
+                    "skills",
+                    skills
+                );
+
+
+                formData.append(
+                    "resume",
+                    resumeFile
+                );
+
+
+                formData.append(
+                    "message",
+                    message
+                );
+
+
+                // =========================
+                // INTERNSHIP DETAILS
+                // =========================
+
+                let internship = "";
+
+                let company = "";
+
+
+                try {
+
+                    const selectedInternship =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "selectedInternship"
+                            )
+                        );
+
+
+                    if (
+                        selectedInternship
+                    ) {
+
+                        internship =
+                            selectedInternship.title ||
+                            selectedInternship.role ||
+                            "";
+
+                        company =
+                            selectedInternship.company ||
+                            "";
+
+                    }
+
+                }
+
+                catch (error) {
+
+                    console.log(
+                        "No internship data found."
+                    );
+
+                }
+
+
+                formData.append(
+                    "internship",
+                    internship
+                );
+
+
+                formData.append(
+                    "company",
+                    company
+                );
+
+
+                // =========================
+                // DISABLE BUTTON
+                // =========================
+
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "Submitting...";
+
+
+                // =========================
+                // SEND TO SERVER
+                // =========================
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/apply",
+                            {
+
+                                method: "POST",
+
+                                body: formData
+
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    // =========================
+                    // SUCCESS
+                    // =========================
+
+                    if (
+                        response.ok &&
+                        result.success
+                    ) {
+
+                        form.style.display =
+                            "none";
+
+
+                        successMessage.style.display =
+                            "block";
+
+
+                        successMessage.innerHTML = `
+
+                            🎉 Application Submitted Successfully!
+
+                            <br><br>
+
+                            <span>
+                                Your Application ID:
+                                <strong>
+                                    #${result.applicationId}
+                                </strong>
+                            </span>
+
+                            <br><br>
+
+                            <span>
+                                Your resume has been uploaded successfully.
+                            </span>
+
+                            <br><br>
+
+                            <span>
+                                Thank you for applying.
+                            </span>
+
+                        `;
+
+                    }
+
+
+                    // =========================
+                    // ERROR
+                    // =========================
+
+                    else {
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.textContent =
+                            "Submit Application";
+
+
+                        alert(
+                            result.message ||
+                            "Unable to submit application."
+                        );
+
+                    }
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        "Application Error:",
+                        error
+                    );
+
+
+                    submitButton.disabled =
+                        false;
+
+                    submitButton.textContent =
+                        "Submit Application";
+
+
+                    alert(
+                        "Unable to connect to server."
+                    );
+
+                }
+
+            }
+        );
+
+
+        // =========================
+        // PHONE INPUT
+        // ONLY NUMBERS
+        // =========================
+
+        document
+            .getElementById("phone")
+            .addEventListener(
+                "input",
+                function() {
+
+                    this.value =
+                        this.value.replace(
+                            /[^0-9]/g,
+                            ""
+                        );
+
+                }
+            );
+
+
+    </script>
+
+
+</body>
+
+</html>

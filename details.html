@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Internship Details</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Internship Details</h1>
+
+    <p>Know more about this internship</p>
+
+</header>
+
+
+
+<section class="details-container">
+
+    <div class="details-card">
+
+
+        <span
+            class="tag"
+            id="category">
+        </span>
+
+
+        <h2 id="role">
+            Internship Role
+        </h2>
+
+
+        <h3 id="company">
+            Company
+        </h3>
+
+
+
+        <div class="details-info">
+
+            <p id="location"></p>
+
+            <p id="stipend"></p>
+
+            <p id="duration"></p>
+
+            <p id="skills"></p>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+        <h3>
+            About the Internship
+        </h3>
+
+
+        <p
+            class="description"
+            id="description">
+        </p>
+
+
+
+        <h3>
+            Eligibility
+        </h3>
+
+
+        <ul>
+
+            <li>
+                B.Tech / BCA / B.Sc Computer Science
+            </li>
+
+            <li>
+                Basic programming knowledge
+            </li>
+
+            <li>
+                Good communication and learning skills
+            </li>
+
+            <li>
+                Interest in software development
+            </li>
+
+        </ul>
+
+
+
+        <h3>
+            Required Skills
+        </h3>
+
+
+        <div
+            class="skills"
+            id="skillsList">
+        </div>
+
+
+
+        <button
+            class="apply-button"
+            onclick="applyNow()">
+
+            Apply Now
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* Get selected internship */
+
+const data =
+    JSON.parse(
+        localStorage.getItem(
+            "selectedInternship"
+        )
+    );
+
+
+/* If no internship selected */
+
+if (!data) {
+
+    window.location.href = "index.html";
+
+}
+
+
+/* Show information */
+
+document.getElementById("category").textContent =
+    data.category;
+
+
+document.getElementById("role").textContent =
+    data.role;
+
+
+document.getElementById("company").textContent =
+    data.company;
+
+
+document.getElementById("location").textContent =
+    "📍 Location: " + data.location;
+
+
+document.getElementById("stipend").textContent =
+    "💰 Stipend: " + data.stipend;
+
+
+document.getElementById("duration").textContent =
+    "⏳ Duration: " + data.duration;
+
+
+document.getElementById("skills").textContent =
+    "🛠 Skills: " + data.skills;
+
+
+document.getElementById("description").textContent =
+    data.description;
+
+
+/* Skills */
+
+const skillList =
+    data.skills.split(",");
+
+
+const skillsContainer =
+    document.getElementById(
+        "skillsList"
+    );
+
+
+skillList.forEach(function(skill) {
+
+    const span =
+        document.createElement("span");
+
+    span.textContent =
+        skill.trim();
+
+    skillsContainer.appendChild(span);
+
+});
+
+
+/* Apply */
+
+function applyNow() {
+
+    window.location.href = "apply.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
